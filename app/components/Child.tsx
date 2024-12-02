@@ -1,4 +1,5 @@
 "use client";
+
 import Loader from "./static/loader/Loader";
 import React, { useState } from "react";
 import { useAIFunction } from "../hooks/useAiFunction";
@@ -21,9 +22,9 @@ export default function Translator() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center">
-      <section className="w-full max-w-2xl bg-gray-800 rounded-lg shadow-lg p-6 space-y-4 h-[50vh] flex flex-col">
-        <div className="flex items-center space-x-4 bg-gray-700 p-4 rounded-lg">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
+      <section className="w-full max-w-lg bg-gray-800 rounded-lg shadow-lg p-4 space-y-4 flex flex-col md:p-6 md:space-y-6 h-auto">
+        <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 bg-gray-700 p-4 rounded-lg">
           <input
             className="flex-1 bg-gray-900 text-white placeholder-gray-500 px-4 py-2 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
             type="text"
@@ -34,35 +35,36 @@ export default function Translator() {
           <button
             onClick={handleFetch}
             disabled={loading}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Translate
           </button>
-
-          {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
-        <div className=" w-full h-full flex items-center justify-center ">
+        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+        <div className="flex flex-col items-center justify-center w-full h-full">
           {!data && !loading && (
             <PromptSuggestionRow onPromptClick={handleFetchSuggestedPromt} />
           )}
           {loading && <Loader />}
           {data && !loading && (
             <div className="flex flex-col gap-2 w-full">
-              <h2 className="text-center mb-4">Translation Details</h2>
+              <h2 className="text-center mb-4 text-lg font-semibold">
+                Translation Details
+              </h2>
               <p>
-                <strong>Meaning :</strong> {data.translateInEnglish}
+                <strong>Meaning:</strong> {data.translateInEnglish}
               </p>
               <p>
-                <strong>Synonym :</strong> {data.meaningfulSynonym}
+                <strong>Synonym:</strong> {data.meaningfulSynonym}
               </p>
               <p>
-                <strong>Antonym :</strong> {data.meaningfulAntonym}
+                <strong>Antonym:</strong> {data.meaningfulAntonym}
               </p>
               <p>
-                <strong>Article :</strong> {data.correctArticle}
+                <strong>Article:</strong> {data.correctArticle}
               </p>
               <p>
-                <strong>Example :</strong> {data.exampleOfUsing}
+                <strong>Example:</strong> {data.exampleOfUsing}
               </p>
             </div>
           )}
