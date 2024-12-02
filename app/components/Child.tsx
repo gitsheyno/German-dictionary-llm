@@ -2,6 +2,7 @@
 import Loader from "./static/loader/Loader";
 import React, { useState } from "react";
 import { useAIFunction } from "../hooks/useAiFunction";
+import PromptSuggestionRow from "./SuggestedPromt";
 
 export default function Translator() {
   const { data, loading, error, fetchWordDetails } = useAIFunction();
@@ -10,6 +11,12 @@ export default function Translator() {
   const handleFetch = () => {
     if (inputValue.trim()) {
       fetchWordDetails(inputValue);
+    }
+  };
+
+  const handleFetchSuggestedPromt = (str: string) => {
+    if (str.trim()) {
+      fetchWordDetails(str);
     }
   };
 
@@ -35,6 +42,9 @@ export default function Translator() {
           {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
         <div className=" w-full h-full flex items-center justify-center ">
+          {!data && !loading && (
+            <PromptSuggestionRow onPromptClick={handleFetchSuggestedPromt} />
+          )}
           {loading && <Loader />}
           {data && !loading && (
             <div className="flex flex-col gap-2 w-full">

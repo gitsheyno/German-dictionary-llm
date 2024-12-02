@@ -1,13 +1,5 @@
 import { useState } from "react";
-import { aiFunction } from "../utils/ai"; // Adjust the path as needed
-
-// type WordDetails = {
-//   translateInEnglish: string;
-//   meaningfulSynonym: string;
-//   meaningfulAntonym: string;
-//   correctArticle: "der" | "die" | "das";
-//   exampleOfUsing: string;
-// };
+import { aiFunction } from "../utils/ai";
 
 export const useAIFunction = () => {
   const [data, setData] = useState<Record<string, string> | null>(null);
@@ -19,7 +11,7 @@ export const useAIFunction = () => {
     setError(null);
 
     try {
-      const result = await aiFunction(word); // Pass the word to aiFunction
+      const result = await aiFunction(word);
       setData(result);
     } catch (err) {
       setError("Failed to fetch data. Please try again.");

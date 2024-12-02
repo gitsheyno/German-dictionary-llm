@@ -4,14 +4,6 @@ import { ChatOpenAI } from "@langchain/openai";
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 import { JsonOutputParser } from "@langchain/core/output_parsers";
 
-// type WordDetails = {
-//   translateInEnglish: string;
-//   meaningfulSynonym: string;
-//   meaningfulAntonym: string;
-//   correctArticle: "der" | "die" | "das";
-//   exampleOfUsing: string;
-// };
-
 export const aiFunction = async (str: string) => {
   const model = new ChatOpenAI({ model: "gpt-4" });
   const parser = new JsonOutputParser();
@@ -38,13 +30,7 @@ export const aiFunction = async (str: string) => {
   ];
 
   const result = await model.invoke(messages);
-
-  //   const content = await result.content;
-
   const content: Record<string, string> = await parser.invoke(result);
 
-  //   const cnt: WordDetails = JSON.parse(content);
-
-  console.log(content);
   return content;
 };
