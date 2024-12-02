@@ -4,15 +4,15 @@ import { ChatOpenAI } from "@langchain/openai";
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 import { JsonOutputParser } from "@langchain/core/output_parsers";
 
-type WordDetails = {
-  translateInEnglish: string;
-  meaningfulSynonym: string;
-  meaningfulAntonym: string;
-  correctArticle: "der" | "die" | "das";
-  exampleOfUsing: string;
-};
+// type WordDetails = {
+//   translateInEnglish: string;
+//   meaningfulSynonym: string;
+//   meaningfulAntonym: string;
+//   correctArticle: "der" | "die" | "das";
+//   exampleOfUsing: string;
+// };
 
-export const aiFunction = async () => {
+export const aiFunction = async (str: string) => {
   const model = new ChatOpenAI({ model: "gpt-4" });
   const parser = new JsonOutputParser();
   const messages = [
@@ -34,14 +34,14 @@ export const aiFunction = async () => {
         3. Return the object in the same format as shown above, without any additional text or explanation.
         `
     ),
-    new HumanMessage("Arsch"),
+    new HumanMessage(str),
   ];
 
   const result = await model.invoke(messages);
 
   //   const content = await result.content;
 
-  const content = await parser.invoke(result);
+  const content: Record<string, string> = await parser.invoke(result);
 
   //   const cnt: WordDetails = JSON.parse(content);
 
