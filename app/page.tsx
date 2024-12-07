@@ -1,8 +1,8 @@
-import Translator from "./components/Translator";
+import MainWrapper from "./components/MainWrapper";
 export default function Home() {
   return (
     <div>
-      <Translator />
+      <MainWrapper />
     </div>
   );
 }

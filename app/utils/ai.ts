@@ -17,8 +17,12 @@ export const aiFunction = async (str: string) => {
         correctArticle: "",
         exampleOfUsing: "",
       }} 
-      you return me an object type like in programimng language, of key values, first key should be called translateInEnglish, second should be called  meaningfulSynonym synonym, third key should be called meaningfulAntonym, next should be called correctArticle, last should be called  exampleOfUsing,
-        make sure to use the same exact keys and dont change them 
+   
+        The first key is called translateInEnglish. Check if the input is a verb or a noun. If the input is capitalized, it is a noun; if not, it is not a noun, should be translate din english.
+        The second key is called meaningfulSynonym. Provide a meaningful synonym for the input. If no synonym is found, return "notFound".
+        The third key is called meaningfulAntonym. Provide a meaningful antonym for the input. If the input is a noun, return "notFound" since nouns generally do not have antonyms (e.g., for "dog," return "notFound").
+        The fourth key is called correctArticle. Return the correct article ("der," "die," or "das") for the input, if applicable.
+        The fifth key is called exampleOfUsing. Provide a meaningful example sentence using the input in context and it must use the same input for example.
 
         ### Instructions:
         1. Always use the exact keys as shown above. Do not change their names or order.
