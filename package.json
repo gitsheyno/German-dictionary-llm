@@ -17,8 +17,8 @@
     "jsdom": "^25.0.1",
     "langchain": "^0.3.6",
     "next": "15.0.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "vitest": "^2.1.8"
   },
   "devDependencies": {
