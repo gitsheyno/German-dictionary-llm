@@ -7,7 +7,7 @@ export default function Result({
 }) {
   return (
     <>
-      <div className="flex flex-col gap-2 w-full">
+      <div data-testid="result" className="flex flex-col gap-2 w-full">
         <h2 className="text-center mb-4 text-lg font-semibold">
           Translation Details
         </h2>
