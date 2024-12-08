@@ -1,5 +1,5 @@
 import React from "react";
 import Translator from "./Translator";
-export default async function AppWrapper() {
+export default function AppWrapper() {
   return <Translator />;
 }
