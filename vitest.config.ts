@@ -6,10 +6,6 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     globals: true,
-    // environmentMatchGlobs: [
-    //   ["**/*.test.tsx", "jsdom"],
-    //   ["**/*.component.test.ts", "jsdom"],
-    // ],
     setupFiles: ["@testing-library/jest-dom/vitest"],
   },
 });

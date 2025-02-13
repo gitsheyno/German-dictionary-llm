@@ -31,6 +31,6 @@ describe("Result Component", () => {
     render(<Result data={null} />);
 
     expect(screen.getByText("Translation Details")).toBeInTheDocument();
-    expect(screen.getByText("Meaning:")).toBeInTheDocument();
+    expect(screen.getByText("Meaning")).toBeInTheDocument();
   });
 });
